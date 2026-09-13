@@ -1,77 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ぺてんと ネット詐欺シミュレーション</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+        <title>ZAGI</title>
 
-<body>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 
-  <header class="site-header">
-    <div class="logo">
-      <!-- 将来的に画像にする場合は下記を <img> に差し替えます -->
-      <span>ぺてんと シミュレーション</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#">ホーム</a>
-      <a href="#">使い方</a>
-      <a href="#">お問い合わせ</a>
-    </nav>
-  </header>
+    <body>
 
-  <main class="container">
-    <h1 class="page-title">体験する</h1>
+        <header class="site-header">
+            <h1 class="logo">ZAGI</h1>
+        </header>
 
-    <!-- 詐欺体験カードエリア -->
-    <div class="card-grid">
+        <main class="home">
+            
+            <section class="hero">
+                <h2>騙されてみよう。</h2>
+                <p>
+                    ネット詐欺は、最初から怪しいとは限りません。<br>
+                    実際のネット利用に近い体験を通して、
+                    「気づく・止まる・確かめる」力をつけましょう。
+                </p>
 
-      <!-- フィッシング -->
-      <a href="phishing.html" class="scam-card">
-        <div class="card-content">
-          <!-- 絵文字から画像に差し替える際は <img> を使用します -->
-          <div class="card-icon">💳</div>
-          <h2>フィッシング</h2>
-        </div>
-        <div class="card-hover-overlay">
-          <p>偽のメールやSMSから偽サイトに誘導し、個人情報を入力させる手口を体験します。</p>
-        </div>
-      </a>
+                <button id="startExperience">
+                    無料占いをしていると...
+                </button>
+            </section>
 
-      <!-- 偽セキュリティ警告 -->
-      <a href="warning.html" class="scam-card">
-        <div class="card-content">
-          <div class="card-icon">⚠️</div>
-          <h2>偽セキュリティ警告</h2>
-        </div>
-        <div class="card-hover-overlay">
-          <p>「ウイルスに感染しました」という画面と警告音で焦らせる手口を体験します。</p>
-        </div>
-      </a>
+        </main>
 
-      <!-- 偽懸賞 -->
-      <a href="sweepstakes.html" class="scam-card">
-        <div class="card-content">
-          <div class="card-icon">🎁</div>
-          <h2>偽懸賞・当選</h2>
-        </div>
-        <div class="card-hover-overlay">
-          <p>「豪華賞品が当たった」と見せかけて、不審な登録サイトに誘導する手口を体験します。</p>
-        </div>
-      </a>
+        <footer class="site-footer">
+            <p>&copy; 2026 ZAGI. All rights reserved.</p>
+        </footer>
 
-    </div>
+        <script src="js/main.js"></script>
 
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 黄巻がみ</p>
-  </footer>
-
-  <script src="script.js"></script>
-
-</body>
-
+    </body>
 </html>
