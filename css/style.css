@@ -1,165 +1,52 @@
-/* 全体スタイル */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
+    margin: 0;
     font-family: sans-serif;
-    background-color: #f8faf9; /* ほんのりグリーン味のある明るいホワイト */
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    background: #ffffff;
+    color: #222222;
 }
 
-/* ヘッダー（影を削除しフラットに） */
 .site-header {
-    background-color: #00a381;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 24px 40px;
+    border-bottom: 1px solid #eeeeee;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: white;
-    display: flex;
-    align-items: center;
+    margin: 0;
+    font-size: 24px;
 }
 
-/* ロゴ画像を入れる場合のスタイル準備 */
-.logo img {
-    height: 40px; /* 必要に応じて調整 */
-    width: auto;
-    display: block;
+.home {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px;
 }
 
-.nav-links a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: white;
-    font-size: 0.95rem;
-    transition: opacity 0.2s;
-}
-
-.nav-links a:hover {
-    opacity: 0.8;
-}
-
-/* メイン領域 */
-.container {
-    flex: 1;
-    max-width: 1000px;
-    width: 100%;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.page-title {
+.hero {
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-    color: #00a381;
 }
 
-/* グリッド配置 */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+.hero h2 {
+    margin-bottom: 24px;
+    font-size: 40px;
 }
 
-/* スキャムカード（カード全体をボタン化・影削除） */
-.scam-card {
-    position: relative;
-    background-color: #ffffff;
-    border: 2px solid #e2e8f0; /* 初期状態の標準枠線 */
-    border-radius: 12px;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* オーバーレイのはみ出し防止 */
+.hero p {
+    line-height: 1.9;
+}
+
+.hero button {
+    margin-top: 32px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 10px;
+    background: #222222;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
-    transition: border-color 0.2s ease;
-    min-height: 200px;
 }
 
-/* マウスカーソルを乗せたとき：グリーン枠線のみ付与（影・浮き上がりは無し） */
-.scam-card:hover {
-    border-color: #00a381;
-}
-
-/* アイコン表示エリア */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.card-icon {
-    font-size: 3.5rem;
-    line-height: 1;
-}
-
-/* 正方形画像アイコンを入れる際の準備クラス */
-.card-icon-img {
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.scam-card h2 {
-    font-size: 1.25rem;
-    color: #2d3748;
-}
-
-/* ホバー時の半透明説明文オーバーレイ */
-.card-hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.92); /* 白の半透明背景 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-/* ホバー時に説明文を表示 */
-.scam-card:hover .card-hover-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-.card-hover-overlay p {
-    font-size: 0.9rem;
-    color: #2d3748;
-    line-height: 1.6;
-    text-align: left;
-}
-
-/* フッター */
 .site-footer {
-    background-color: #ffffff;
-    border-top: 1px solid #e2e8f0;
+    padding: 24px;
     text-align: center;
-    padding: 1.2rem;
-    font-size: 0.85rem;
-    color: #718096;
+    color: #777777;
 }
