@@ -1,42 +1,570 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAGI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-        <title>ZAGI</title>
+<header class="site-header">
+    <div class="header-inner">
+        <button id="homeButton" class="logo-button" type="button" aria-label="ZAGIホームへ戻る">ZAGI</button>
+        <div class="header-actions">
+            <button id="guideButton" class="text-button" type="button">使い方</button>
+            <button id="modeButton" class="text-button" type="button">授業モード</button>
+        </div>
+    </div>
+</header>
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<main>
 
-    <body>
+    <!-- =========================
+         HOME
+         ========================= -->
+    <section id="homeScreen" class="screen home-screen">
+        <div class="hero-block">
+            <p class="eyebrow">インターネット詐欺を学ぶ・体験する</p>
+            <h1>騙されてみよう。</h1>
+            <p class="hero-copy">
+                ネット詐欺は、最初から怪しいとは限りません。<br>
+                実際のネット利用に近い体験を通して、<strong>気づく・止まる・確かめる</strong>を考えてみましょう。
+            </p>
+        </div>
 
-        <header class="site-header">
-            <h1 class="logo">ZAGI</h1>
-        </header>
-
-        <main class="home">
-            
-            <section class="hero">
-                <h2>騙されてみよう。</h2>
+        <div class="home-panel">
+            <div class="experience-card featured-card">
+                <div>
+                    <span class="card-tag">LEVEL 3</span>
+                    <span class="card-tag">体験 約10分</span>
+                </div>
+                <h2>「無料占いをしていると……」</h2>
                 <p>
-                    ネット詐欺は、最初から怪しいとは限りません。<br>
-                    実際のネット利用に近い体験を通して、
-                    「気づく・止まる・確かめる」力をつけましょう。
+                    普通の占いサイトから始まり、無料鑑定、メール、毎日の鑑定を通して、
+                    いつの間にか有料サービスへ誘導される流れを体験します。
                 </p>
+                <button id="startExperience" class="primary-button" type="button">体験する</button>
+            </div>
 
-                <button id="startExperience">
-                    無料占いをしていると...
-                </button>
+            <div class="home-tools">
+                <button id="homeGuideButton" class="secondary-button" type="button">使い方・設定</button>
+                <button id="homeModeButton" class="secondary-button" type="button">授業モード</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE WRAPPER
+         ========================= -->
+    <section id="experienceScreen" class="screen experience-screen" hidden>
+
+        <!-- Experience intro -->
+        <div id="expIntro" class="experience-page" data-exp-page>
+            <div class="page-narrow">
+                <span class="card-tag">LEVEL 3</span>
+                <span class="card-tag">体験時間 約10分</span>
+                <h1>「無料占いをしていると……」</h1>
+                <p class="lead">
+                    普段インターネットを使うときの感覚で、気になったものを見たり、操作したりしてみてください。
+                </p>
+                <div class="info-box">
+                    <strong>この体験について</strong>
+                    <p>
+                        このサイトは、詐欺の過程を安全に体験するための教材です。
+                        本物のお金は使いません。途中で止まっても、最後まで先の流れを確認できます。
+                    </p>
+                </div>
+                <button id="beginScenarioButton" class="primary-button" type="button">体験を始める</button>
+                <button id="backHomeFromIntro" class="link-button" type="button">ホームへ戻る</button>
+            </div>
+        </div>
+
+
+        <!-- Normal fortune portal -->
+        <div id="fortunePortal" class="experience-page mock-site" data-exp-page hidden>
+            <div class="mock-browser-bar">
+                <span>fortune-world.example</span>
+                <span>🔒</span>
+            </div>
+
+            <div class="fortune-brand-header">
+                <div>
+                    <p class="mock-site-name">Fortune World</p>
+                    <p class="mock-site-subtitle">毎日の運勢をもっと身近に。</p>
+                </div>
+                <button id="dummyMenuButton" class="mini-button" type="button">メニュー</button>
+            </div>
+
+            <div class="fortune-nav">
+                <button class="portal-dummy-link" type="button">今日の占い</button>
+                <button class="portal-dummy-link" type="button">恋愛占い</button>
+                <button class="portal-dummy-link" type="button">金運占い</button>
+                <button class="portal-dummy-link" type="button">相性占い</button>
+            </div>
+
+            <div class="portal-grid">
+                <article class="portal-main-card">
+                    <p class="section-kicker">TODAY</p>
+                    <h2>今日の12星座占い</h2>
+                    <p>あなたの今日の運勢をチェックしてみましょう。</p>
+                    <div class="zodiac-grid">
+                        <button class="zodiac-button" type="button" data-zodiac="おひつじ座">おひつじ座</button>
+                        <button class="zodiac-button" type="button" data-zodiac="おうし座">おうし座</button>
+                        <button class="zodiac-button" type="button" data-zodiac="ふたご座">ふたご座</button>
+                        <button class="zodiac-button" type="button" data-zodiac="かに座">かに座</button>
+                    </div>
+                    <div id="zodiacResult" class="zodiac-result" hidden></div>
+                </article>
+
+                <aside class="portal-side-card">
+                    <p class="section-kicker">PICK UP</p>
+                    <h3>今週のおすすめ占い</h3>
+                    <p>いま気になるテーマから占ってみよう。</p>
+                    <button class="portal-dummy-link card-like-link" type="button">もっと見る</button>
+                </aside>
+            </div>
+
+            <section class="portal-ad">
+                <div class="ad-badge">おすすめ</div>
+                <h2>あなたの金運を無料で鑑定！</h2>
+                <p>今月の運勢を詳しくチェックしてみませんか？</p>
+                <button id="fortuneAdButton" class="primary-button ad-button" type="button">詳しく見る</button>
             </section>
 
-        </main>
+            <div class="portal-footnote">
+                <button class="portal-dummy-link" type="button">利用規約</button>
+                <button class="portal-dummy-link" type="button">お問い合わせ</button>
+                <button class="portal-dummy-link" type="button">運営情報</button>
+            </div>
+        </div>
 
-        <footer class="site-footer">
-            <p>&copy; 2026 ZAGI. All rights reserved.</p>
-        </footer>
 
-        <script src="js/main.js"></script>
+        <!-- Free fortune landing -->
+        <div id="freeFortune" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow service-page">
+                <p class="service-label">無料鑑定</p>
+                <h1>あなたの金運を詳しく鑑定します</h1>
+                <p class="lead">
+                    生年月日と相談内容をもとに、今月の金運を無料で鑑定します。
+                </p>
 
-    </body>
+                <div class="soft-banner">
+                    初回無料・登録料なしでお試しいただけます
+                </div>
+
+                <form id="fortuneForm" class="form-card">
+                    <div class="form-group">
+                        <label for="nickname">お名前</label>
+                        <input id="nickname" name="nickname" type="text" placeholder="ニックネーム" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">生年月日</label>
+                        <input id="birthday" name="birthday" type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="consultation">何について占いますか？</label>
+                        <textarea id="consultation" name="consultation" rows="5" placeholder="例：これからのお金について知りたい" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input id="email" name="email" type="email" placeholder="example@example.com" required>
+                    </div>
+
+                    <p class="safety-note">
+                        ※体験用の架空情報を入力してください。入力内容は外部へ送信されず、ページを更新すると消えます。
+                    </p>
+
+                    <button class="primary-button full-width" type="submit">無料で鑑定してもらう</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Application received -->
+        <div id="applicationReceived" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow centered-page">
+                <div class="success-icon">✓</div>
+                <h1>鑑定のお申し込みを受け付けました</h1>
+                <p class="lead">
+                    詳しい結果は登録したメールアドレス宛にお送りします。
+                </p>
+                <div id="incomingMailNotice" class="mail-notice" hidden>
+                    <strong>📩 新しいメールが届きました</strong>
+                    <p>メールを確認してみましょう。</p>
+                </div>
+                <button id="openFirstMailButton" class="primary-button" type="button">メールを確認する</button>
+            </div>
+        </div>
+
+
+        <!-- Inbox -->
+        <div id="inbox" class="experience-page" data-exp-page hidden>
+            <div class="page-content">
+                <div class="experience-topbar">
+                    <div>
+                        <p class="eyebrow">体験用メールボックス</p>
+                        <h1>受信箱</h1>
+                    </div>
+                    <button id="inboxToHomeButton" class="secondary-button" type="button">体験トップ</button>
+                </div>
+                <div id="mailList" class="mail-list"></div>
+                <div class="inbox-safe-note">
+                    実際のメールサービスには接続していません。この受信箱はZAGI内だけのシミュレーションです。
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Mail detail -->
+        <div id="mailDetail" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <button id="backToInboxButton" class="link-button" type="button">← 受信箱へ戻る</button>
+                <div id="mailDetailContent" class="mail-detail-card"></div>
+            </div>
+        </div>
+
+
+        <!-- Login -->
+        <div id="loginScreen" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <div class="mock-browser-bar">
+                    <span>fortune-castle.example</span>
+                    <span>🔒</span>
+                </div>
+                <div class="login-branding">
+                    <p class="mock-site-name">～本格占い・施術の館～</p>
+                    <h1>開運の扉</h1>
+                    <p>専用ページへログインしてください。</p>
+                </div>
+                <form id="loginForm" class="form-card login-card">
+                    <div class="form-group">
+                        <label for="loginUser">ユーザー名</label>
+                        <input id="loginUser" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">パスワード</label>
+                        <input id="loginPassword" type="password" required>
+                    </div>
+                    <p class="hint-text">メールに届いた体験用の情報を入力してください。</p>
+                    <button class="primary-button full-width" type="submit">ログイン</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Fortune service dashboard -->
+        <div id="serviceDashboard" class="experience-page" data-exp-page hidden>
+            <div class="dashboard-wrap">
+                <div class="service-header-mock">
+                    <div>
+                        <p class="mock-site-name">～本格占い・施術の館～</p>
+                        <h1>開運の扉</h1>
+                    </div>
+                    <div class="points-display">現在のポイント：<strong id="pointsDisplay">75</strong>pt</div>
+                </div>
+
+                <div class="day-progress" aria-label="シミュレーション日数">
+                    <span>DAY <strong id="dayDisplay">1</strong> / 7</span>
+                    <div class="day-progress-bar"><div id="dayProgressFill"></div></div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <main class="dashboard-main">
+                        <div class="dashboard-card">
+                            <p class="section-kicker">今日のおすすめ</p>
+                            <h2>○○様への本日の鑑定</h2>
+                            <p id="dashboardSummary">あなたの運勢について、新しいメッセージが届いています。</p>
+                            <button id="openCurrentDayButton" class="primary-button" type="button">今日のメッセージを見る</button>
+                        </div>
+
+                        <div class="message-preview-card">
+                            <div>
+                                <span class="new-dot"></span>
+                                <strong id="dashboardMailCount">新着メッセージがあります</strong>
+                                <p>受信箱から詳しい内容を確認できます。</p>
+                            </div>
+                            <button id="dashboardInboxButton" class="secondary-button" type="button">受信箱を見る</button>
+                        </div>
+                    </main>
+
+                    <aside class="dashboard-side">
+                        <button id="pointsPurchaseButton" class="side-action-card" type="button">
+                            <span>ポイント購入</span>
+                            <small>少額から追加できます</small>
+                        </button>
+                        <button id="stopExperienceButton" class="side-action-card subtle-action" type="button">
+                            <span>ここで体験を止める</span>
+                            <small>この先の流れを見ることもできます</small>
+                        </button>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Daily message page -->
+        <div id="dailyMessage" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <div class="day-heading">
+                    <span class="card-tag">DAY <span id="messageDayLabel">1</span> / 7</span>
+                    <h1 id="dayMessageTitle">本日の鑑定結果</h1>
+                </div>
+                <div id="dayMessageBody" class="day-message-card"></div>
+
+                <div id="feelingCheck" class="feeling-check" hidden>
+                    <h2>この時点で、どう感じましたか？</h2>
+                    <p>これは評価ではありません。今の自分の感覚をメモしてみましょう。</p>
+                    <div id="feelingOptions" class="choice-grid"></div>
+                    <button id="skipFeelingButton" class="link-button" type="button">回答せずに進む</button>
+                </div>
+
+                <div class="day-navigation">
+                    <button id="stopFromDayButton" class="secondary-button" type="button">ここで止める</button>
+                    <button id="nextDayButton" class="primary-button" type="button">次の日へ</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Special offer -->
+        <div id="specialOffer" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <div class="offer-card">
+                    <p class="section-kicker">特別なお知らせ</p>
+                    <h1><span id="offerUserName">○○様</span>だけに、特別なご案内があります</h1>
+                    <p>
+                        これまでの鑑定結果をもとに、より詳しい個別鑑定をご案内します。
+                    </p>
+
+                    <div class="price-box">
+                        <p class="price-label">通常価格</p>
+                        <p class="normal-price">10,000円</p>
+                        <p class="price-label">今回だけ</p>
+                        <p class="special-price">3,000円</p>
+                        <p class="deadline">あと <strong>2日14時間</strong> で終了します</p>
+                    </div>
+
+                    <div class="offer-actions">
+                        <button id="specialPurchaseButton" class="primary-button" type="button">特別鑑定を購入する</button>
+                        <button id="offerPointsButton" class="secondary-button" type="button">ポイントを購入する</button>
+                        <button id="declineOfferButton" class="link-button" type="button">今回はやめる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Points purchase -->
+        <div id="pointsPurchase" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <button id="backToOfferButton" class="link-button" type="button">← 案内へ戻る</button>
+                <h1>ポイントを購入する</h1>
+                <p class="lead">現在のポイント：<strong id="pointsPurchaseCurrent">75</strong>pt</p>
+                <div class="points-grid">
+                    <button class="point-package" type="button" data-points="100" data-price="500">
+                        <strong>100pt</strong>
+                        <span>500円</span>
+                    </button>
+                    <button class="point-package" type="button" data-points="300" data-price="1000">
+                        <strong>300pt</strong>
+                        <span>1,000円</span>
+                    </button>
+                    <button class="point-package" type="button" data-points="1000" data-price="2500">
+                        <strong>1,000pt</strong>
+                        <span>2,500円</span>
+                    </button>
+                </div>
+                <p class="hint-text">ここでは実際の決済は行いません。購入操作の体験だけを行います。</p>
+            </div>
+        </div>
+
+
+        <!-- Checkout -->
+        <div id="checkout" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <button id="backToCheckoutSourceButton" class="link-button" type="button">← 前の画面へ戻る</button>
+                <div class="checkout-card">
+                    <p class="section-kicker">お支払い内容</p>
+                    <h1 id="checkoutTitle">特別鑑定チケット</h1>
+                    <div class="checkout-summary">
+                        <div><span>価格</span><strong id="checkoutPrice">3,000円</strong></div>
+                        <div><span>有効期限</span><strong>3日</strong></div>
+                    </div>
+                    <h2>支払い方法</h2>
+                    <div class="payment-methods">
+                        <button class="payment-method selected" type="button">クレジットカード</button>
+                        <button class="payment-method" type="button">コンビニ払い</button>
+                        <button class="payment-method" type="button">その他</button>
+                    </div>
+                    <div class="safe-payment-box">
+                        <strong>体験用の支払い画面</strong>
+                        <p>カード番号などの実際の決済情報は入力しません。この先も決済は発生しません。</p>
+                    </div>
+                    <button id="confirmPurchaseButton" class="primary-button full-width" type="button">購入を確定する</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Stop choice -->
+        <div id="stopChoice" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow centered-page">
+                <p class="section-kicker">ここまでで止める</p>
+                <h1>この先をどうしますか？</h1>
+                <p class="lead">
+                    ここで体験を終えることもできます。<br>
+                    そのまま進んだ場合に何が起きるかを見ることもできます。
+                </p>
+                <div class="two-action-stack">
+                    <button id="finishNowButton" class="secondary-button" type="button">ここで体験を終える</button>
+                    <button id="seeWhatHappensButton" class="primary-button" type="button">この先に何が起きるか見てみる</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Continuation preview -->
+        <div id="continuationPreview" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow">
+                <p class="section-kicker">もし、そのまま進んでいたら</p>
+                <h1>この先には、こんな流れが用意されていました</h1>
+                <div id="continuationContent" class="route-preview-card"></div>
+                <button id="finishAfterContinuationButton" class="primary-button full-width" type="button">振り返りへ進む</button>
+            </div>
+        </div>
+
+
+        <!-- Experience finished -->
+        <div id="experienceFinished" class="experience-page" data-exp-page hidden>
+            <div class="page-narrow centered-page">
+                <div class="finish-icon">✓</div>
+                <p class="section-kicker">体験終了</p>
+                <h1>ここからは振り返りです</h1>
+                <p class="lead">
+                    ここでは安全に体験できました。<br>
+                    現実なら、この先で支払いにつながる可能性があります。
+                </p>
+                <button id="startReflectionButton" class="primary-button" type="button">振り返る</button>
+            </div>
+        </div>
+
+
+        <!-- Reflection: route -->
+        <div id="reflectionRoute" class="experience-page" data-exp-page hidden>
+            <div class="page-content">
+                <div class="reflection-header">
+                    <p class="section-kicker">1 / 4</p>
+                    <h1>あなたが通ったルート</h1>
+                </div>
+                <div id="routeTimeline" class="timeline"></div>
+                <button id="toDangerPointsButton" class="primary-button" type="button">危険ポイントを見る</button>
+            </div>
+        </div>
+
+
+        <!-- Reflection: danger points -->
+        <div id="reflectionDanger" class="experience-page" data-exp-page hidden>
+            <div class="page-content">
+                <div class="reflection-header">
+                    <p class="section-kicker">2 / 4</p>
+                    <h1>どこが危なかった？</h1>
+                    <p class="lead">この体験では、こんな仕掛けが使われていました。</p>
+                </div>
+                <div id="dangerPointList" class="danger-list"></div>
+                <button id="toAwarenessButton" class="primary-button" type="button">気づく・止まる・確かめるを見る</button>
+            </div>
+        </div>
+
+
+        <!-- Reflection: awareness -->
+        <div id="reflectionAwareness" class="experience-page" data-exp-page hidden>
+            <div class="page-content">
+                <div class="reflection-header">
+                    <p class="section-kicker">3 / 4</p>
+                    <h1>気づく・止まる・確かめる</h1>
+                    <p class="lead">ここでは点数をつけません。この3つの視点から、自分の行動を振り返ります。</p>
+                </div>
+                <div class="three-pillar-grid">
+                    <article class="pillar-card">
+                        <div class="pillar-number">01</div>
+                        <h2>気づく</h2>
+                        <p>「なんかおかしい」と思える違和感や危険サインを見つける。</p>
+                    </article>
+                    <article class="pillar-card">
+                        <div class="pillar-number">02</div>
+                        <h2>止まる</h2>
+                        <p>怪しいと思ったら、クリック・入力・支払いをいったん止める。</p>
+                    </article>
+                    <article class="pillar-card">
+                        <div class="pillar-number">03</div>
+                        <h2>確かめる</h2>
+                        <p>相手が示した情報だけで判断せず、別の経路や信頼できる人に確認する。</p>
+                    </article>
+                </div>
+
+                <div id="reflectionAnswersSummary" class="answers-summary"></div>
+
+                <div class="reflection-question">
+                    <h2>この体験を現実のネットサービスで見つけたら？</h2>
+                    <div id="finalActionChoices" class="choice-grid"></div>
+                </div>
+
+                <button id="toAlternativeButton" class="primary-button" type="button">別の行動をしていたら？</button>
+            </div>
+        </div>
+
+
+        <!-- Reflection: alternative route -->
+        <div id="reflectionAlternative" class="experience-page" data-exp-page hidden>
+            <div class="page-content">
+                <div class="reflection-header">
+                    <p class="section-kicker">4 / 4</p>
+                    <h1>別の行動をしていたら？</h1>
+                </div>
+                <div id="alternativeRouteList" class="alternative-list"></div>
+                <div class="final-note">
+                    <strong>覚えておきたいこと</strong>
+                    <p>
+                        詐欺は、最初から「詐欺らしい顔」をして現れるとは限りません。
+                        気づいたら立ち止まり、別の方法で確かめることが大切です。
+                    </p>
+                </div>
+                <button id="backHomeAfterReflectionButton" class="primary-button" type="button">ホームへ戻る</button>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+
+<!-- =========================
+     Generic modal
+     ========================= -->
+<div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="modalCloseButton" class="modal-close" type="button" aria-label="閉じる">×</button>
+        <h2 id="modalTitle">お知らせ</h2>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>© ZAGI</span>
+        <div>
+            <button id="footerContactButton" class="footer-link" type="button">お問い合わせ</button>
+            <a class="footer-link" href="#" aria-label="制作者の個人サイト（仮）">個人サイト</a>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
 </html>
